@@ -1,50 +1,51 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.3.2'
-	id 'io.spring.dependency-management' version '1.1.6'
+    id 'java'
+    id 'org.springframework.boot' version '3.3.2'
+    id 'io.spring.dependency-management' version '1.1.6'
 }
 
 group = 'community'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	// implementation dependencies
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
+    // implementation dependencies
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
-	// compile-only dependencies
-	compileOnly 'org.projectlombok:lombok'
+    // compile-only dependencies
+    compileOnly 'org.projectlombok:lombok'
 
-	// runtime-only dependencies
-	runtimeOnly 'com.mysql:mysql-connector-j'
+    // runtime-only dependencies
+    runtimeOnly 'com.mysql:mysql-connector-j'
 
-	// annotation processors
-	annotationProcessor 'org.projectlombok:lombok'
+    // annotation processors
+    annotationProcessor 'org.projectlombok:lombok'
 
-	// test implementation dependencies
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // test implementation dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	// test runtime-only dependencies
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // test runtime-only dependencies
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
