@@ -3,3 +3,4 @@ spring:
     name: da_moim
   config:
     import:
+      - db-config.yml
