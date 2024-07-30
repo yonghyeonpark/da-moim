@@ -1,10 +1,8 @@
 package community.da_moim.domain.post;
 
 import community.da_moim.domain.BaseTimeEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import community.da_moim.domain.user.User;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +19,13 @@ public class Post extends BaseTimeEntity {
     private String title;
     private String content;
 
-    public Post(String title, String content) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Post(String title, String content, User user) {
         this.title = title;
         this.content = content;
+        this.user = user;
     }
 }
