@@ -21,7 +21,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // 개발 환경에서는 csrf 설정 제거
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/posts").authenticated()
+                        .anyRequest().permitAll()
+                );
         return http.build();
     }
 }
