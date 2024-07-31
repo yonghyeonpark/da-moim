@@ -18,6 +18,7 @@ public class Post extends BaseTimeEntity {
 
     private String title;
     private String content;
+    private boolean isUpdatable;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -27,5 +28,10 @@ public class Post extends BaseTimeEntity {
         this.title = title;
         this.content = content;
         this.user = user;
+        isUpdatable = true;
+    }
+
+    public void disableUpdate() {
+        isUpdatable = false;
     }
 }
