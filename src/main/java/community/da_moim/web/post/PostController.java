@@ -3,14 +3,12 @@ package community.da_moim.web.post;
 import community.da_moim.service.auth.dto.UserDetailsImpl;
 import community.da_moim.service.post.PostService;
 import community.da_moim.web.post.dto.request.PostSaveDto;
+import community.da_moim.web.post.dto.response.PostShowDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -34,5 +32,11 @@ public class PostController {
         return ResponseEntity
                 .created(uri)
                 .build();
+    }
+
+    @GetMapping("/{postId}")
+    public ResponseEntity<PostShowDto> postDetail(@PathVariable Long postId) {
+        return ResponseEntity
+                .ok(postService.getPostDetail(postId));
     }
 }
