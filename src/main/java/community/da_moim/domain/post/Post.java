@@ -24,11 +24,23 @@ public class Post extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Post(String title, String content, User user) {
+    public Post(
+            String title,
+            String content,
+            User user
+    ) {
         this.title = title;
         this.content = content;
         this.user = user;
         isUpdatable = true;
+    }
+
+    public void update(
+            String title,
+            String content
+    ) {
+        this.title = title;
+        this.content = content;
     }
 
     public void disableUpdate() {
