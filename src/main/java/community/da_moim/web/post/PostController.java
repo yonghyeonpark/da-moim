@@ -3,6 +3,8 @@ package community.da_moim.web.post;
 import community.da_moim.service.auth.dto.UserDetailsImpl;
 import community.da_moim.service.post.PostService;
 import community.da_moim.web.post.dto.request.PostSaveDto;
+import community.da_moim.web.post.dto.request.PostUpdateDto;
+import community.da_moim.web.post.dto.response.PostAlarmDto;
 import community.da_moim.web.post.dto.response.PostShowDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +26,8 @@ public class PostController {
     public ResponseEntity<Void> post(
             @Valid @RequestBody PostSaveDto postSaveDto,
             @AuthenticationPrincipal UserDetailsImpl userDetails,
-            UriComponentsBuilder uriComponentsBuilder) {
+            UriComponentsBuilder uriComponentsBuilder
+    ) {
         Long postId = postService.post(postSaveDto, userDetails.getUsername());
         URI uri = uriComponentsBuilder.path("/api/posts/{postId}")
                 .buildAndExpand(postId)
@@ -38,5 +41,14 @@ public class PostController {
     public ResponseEntity<PostShowDto> postDetail(@PathVariable Long postId) {
         return ResponseEntity
                 .ok(postService.getPostDetail(postId));
+    }
+
+    @PutMapping("/{postId}")
+    public ResponseEntity<PostAlarmDto> postUpdate(
+            @RequestBody PostUpdateDto postUpdateDto,
+            @PathVariable Long postId
+    ) {
+        return ResponseEntity
+                .ok(postService.update(postUpdateDto, postId));
     }
 }
