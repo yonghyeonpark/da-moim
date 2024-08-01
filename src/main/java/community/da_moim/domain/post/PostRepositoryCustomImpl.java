@@ -47,4 +47,28 @@ public class PostRepositoryCustomImpl implements PostRepositoryCustom {
                 .orderBy(post.createdAt.desc())
                 .fetch();
     }
+
+    @Override
+    public List<PostShowDto> findAllByTitleKeywordByOrderByCreatedAtDesc(String titleKeyword) {
+        return jpaQueryFactory
+                .select(
+                        Projections.constructor(
+                                PostShowDto.class,
+                                post.title,
+                                post.content,
+                                user.id,
+                                user.nickname,
+                                post.createdAt
+                        )
+                )
+                .from(post)
+                .leftJoin(user)
+                .fetchJoin()
+                .where(
+                        post.deletedAt.isNull(),
+                        post.title.contains(titleKeyword)
+                )
+                .orderBy(post.createdAt.desc())
+                .fetch();
+    }
 }

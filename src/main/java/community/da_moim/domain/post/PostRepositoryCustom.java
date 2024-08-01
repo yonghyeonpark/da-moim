@@ -10,4 +10,6 @@ public interface PostRepositoryCustom {
     List<Post> findAllUpdatablePosts(LocalDateTime tenDaysAgo);
 
     List<PostShowDto> findAllByOrderByCreatedAtDesc();
+
+    List<PostShowDto> findAllByTitleKeywordByOrderByCreatedAtDesc(String titleKeyword);
 }

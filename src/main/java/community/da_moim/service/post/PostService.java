@@ -38,9 +38,13 @@ public class PostService {
         Post post = postRepository.findById(postId).get();
         return PostMapper.toPostDetailDto(post);
     }
-    
+
     public List<PostShowDto> getPostsDetail() {
         return postRepository.findAllByOrderByCreatedAtDesc();
+    }
+
+    public List<PostShowDto> getPostsDetailByTitleKeyword(String titleKeyword) {
+        return postRepository.findAllByTitleKeywordByOrderByCreatedAtDesc(titleKeyword);
     }
 
     // 삭제 여부도 판단

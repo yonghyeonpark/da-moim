@@ -50,6 +50,12 @@ public class PostController {
                 .ok(postService.getPostsDetail());
     }
 
+    @PostMapping("/search")
+    public ResponseEntity<List<PostShowDto>> searchPostBy(@RequestParam String titleKeyword) {
+        return ResponseEntity
+                .ok(postService.getPostsDetailByTitleKeyword(titleKeyword));
+    }
+
     @PutMapping("/{postId}")
     public ResponseEntity<PostAlarmDto> updatePost(
             @RequestBody PostUpdateDto postUpdateDto,
