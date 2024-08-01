@@ -38,13 +38,13 @@ public class PostController {
     }
 
     @GetMapping("/{postId}")
-    public ResponseEntity<PostShowDto> postDetail(@PathVariable Long postId) {
+    public ResponseEntity<PostShowDto> showPostDetail(@PathVariable Long postId) {
         return ResponseEntity
                 .ok(postService.getPostDetail(postId));
     }
 
     @PutMapping("/{postId}")
-    public ResponseEntity<PostAlarmDto> postUpdate(
+    public ResponseEntity<PostAlarmDto> updatePost(
             @RequestBody PostUpdateDto postUpdateDto,
             @PathVariable Long postId
     ) {
