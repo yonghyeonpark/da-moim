@@ -5,6 +5,8 @@ import java.time.temporal.ChronoUnit;
 
 public class PostShowDto {
 
+    private static final int MAX_DAYS_TO_EDIT = 10;
+
     private String title;
     private String content;
     private Long userId;
@@ -21,6 +23,6 @@ public class PostShowDto {
         this.content = content;
         this.userId = userId;
         this.nickname = nickname;
-        this.daysRemainingForEdit = (int) ChronoUnit.DAYS.between(LocalDateTime.now(), createdAt);
+        this.daysRemainingForEdit = MAX_DAYS_TO_EDIT - (int) ChronoUnit.DAYS.between(LocalDateTime.now(), createdAt);
     }
 }
