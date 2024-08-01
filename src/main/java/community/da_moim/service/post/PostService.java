@@ -63,4 +63,9 @@ public class PostService {
         postRepository.findAllUpdatablePosts(LocalDateTime.now().minusDays(10))
                 .forEach(Post::disableUpdate);
     }
+
+    public void delete(Long postId) {
+        postRepository.findById(postId).get()
+                .delete();
+    }
 }

@@ -7,6 +7,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -45,5 +47,9 @@ public class Post extends BaseTimeEntity {
 
     public void disableUpdate() {
         isUpdatable = false;
+    }
+
+    public void delete() {
+        this.deletedAt = LocalDateTime.now();
     }
 }

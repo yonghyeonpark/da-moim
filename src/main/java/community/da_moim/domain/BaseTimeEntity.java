@@ -23,5 +23,5 @@ public class BaseTimeEntity {
     private LocalDateTime lastModifiedAt;
 
     @Column
-    private LocalDateTime deletedAt;
+    protected LocalDateTime deletedAt;
 }
