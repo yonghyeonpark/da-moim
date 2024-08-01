@@ -39,6 +39,7 @@ public class PostService {
     }
 
     // 삭제 여부도 판단
+    @Transactional
     public PostAlarmDto update(
             PostUpdateDto postUpdateDto,
             Long postId
