@@ -7,11 +7,11 @@ public class PostShowDto {
 
     private static final int MAX_DAYS_TO_EDIT = 10;
 
-    private String title;
-    private String content;
-    private Long userId;
-    private String nickname;
-    private int daysRemainingForEdit;
+    private final String title;
+    private final String content;
+    private final Long userId;
+    private final String nickname;
+    private final int daysRemainingForEdit;
 
     public PostShowDto(
             String title,
