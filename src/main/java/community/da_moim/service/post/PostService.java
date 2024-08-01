@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -36,6 +37,10 @@ public class PostService {
     public PostShowDto getPostDetail(Long postId) {
         Post post = postRepository.findById(postId).get();
         return PostMapper.toPostDetailDto(post);
+    }
+    
+    public List<PostShowDto> getPostsDetail() {
+        return postRepository.findAllByOrderByCreatedAtDesc();
     }
 
     // 삭제 여부도 판단

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("/api/posts")
@@ -41,6 +42,12 @@ public class PostController {
     public ResponseEntity<PostShowDto> showPostDetail(@PathVariable Long postId) {
         return ResponseEntity
                 .ok(postService.getPostDetail(postId));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PostShowDto>> showPostsDetail() {
+        return ResponseEntity
+                .ok(postService.getPostsDetail());
     }
 
     @PutMapping("/{postId}")
