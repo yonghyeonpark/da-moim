@@ -5,10 +5,10 @@ import community.da_moim.web.user.dto.request.UserSaveDto;
 
 public class UserMapper {
 
-    public static User toEntity(UserSaveDto userSaveDto) {
+    public static User toEntity(UserSaveDto userSaveDto, String encryptedPassword) {
         return new User(
                 userSaveDto.getLoginId(),
-                userSaveDto.getPassword(),
+                encryptedPassword,
                 userSaveDto.getNickname(),
                 userSaveDto.getEmail(),
                 userSaveDto.getPhoneNumber()
