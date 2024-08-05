@@ -4,3 +4,4 @@ spring:
   config:
     import:
       - db-config.yml
+      - jwt.yml
