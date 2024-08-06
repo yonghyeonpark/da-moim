@@ -48,7 +48,13 @@ public class JwtFilter extends OncePerRequestFilter {
         );
 
         // Spring Security 인증 토큰 생성 및 세션에 사용자 등록
-        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userDetails, null));
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken(
+                        userDetails,
+                        null,
+                        null
+                )
+        );
         filterChain.doFilter(request, response);
     }
 }
