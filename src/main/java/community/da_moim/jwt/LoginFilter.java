@@ -30,7 +30,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
-        response.addHeader("Authorization", "Bearer " + jwtUtil.createJwt(userDetails.getUsername(), 60 * 60 * 10L));
+        response.addHeader("Authorization", "Bearer " + jwtUtil.createJwt(userDetails.getUsername(), 30 * 60 * 1000L));
     }
 
     @Override
