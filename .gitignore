@@ -39,3 +39,4 @@ out/
 ### config ###
 src/main/resources/db-config.yml
 src/main/resources/jwt.yml
+src/main/resources/oauth2.yml
